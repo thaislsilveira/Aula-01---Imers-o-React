@@ -1,0 +1,109 @@
+{
+  "categorias": [
+    {
+      "titulo": "Calistenia",
+      "link": "https://www.youtube.com/watch?v=swWCCjAafDQ",
+      "cor": "#FA8072",
+      "videos": [
+        {
+          "titulo": "Treino em Casa para fazer com a família",
+          "url": "https://www.youtube.com/watch?v=_pqIAzxMe4s"
+        },
+        {
+          "titulo": "8 dicas para começar a calistenia",
+          "url": "https://www.youtube.com/watch?v=UrXWT6St12Y"
+        },
+        {
+          "titulo": "Calistenia para iniciantes",
+          "url": "https://www.youtube.com/watch?v=KQBwTl0mgk8"
+        },
+        {
+          "titulo": "Hipertrofia para o corpo inteiro",
+          "url": "https://www.youtube.com/watch?v=px-E6ZDsgCc"
+        },
+        {
+          "titulo": "Como fazer flexões",
+          "url": "https://www.youtube.com/watch?v=h4XbJ05wU14"
+        }
+      ]
+    },
+    {
+      "titulo": "Hiit",
+      "cor": "#FF8C00",
+      "videos": [
+        {
+          "titulo": "Desafio HIIT - treino cardio para perder gordura",
+          "url": "https://www.youtube.com/watch?v=VYMDwYrxyxw"
+        },
+        {
+          "titulo": "Aerohiit para iniciantes",
+          "url": "https://www.youtube.com/watch?v=KwxCuTuknMk"
+        },
+        {
+          "titulo": "Treino Hiit para pernas e glúteos",
+          "url": "https://www.youtube.com/watch?v=Ij-m240fQdw"
+        },
+        {
+          "titulo": "Desafio HIIT - treino cardio para perder gordura",
+          "url": "https://www.youtube.com/watch?v=VYMDwYrxyxw"
+        },
+        {
+          "titulo": "Hiit com polichinelos",
+          "url": "https://www.youtube.com/watch?v=Ya64pNiZy50"
+        }
+      ]
+    },
+    {
+      "titulo": "Aeróbico",
+      "cor": "#DC143C",
+      "videos": [
+        {
+          "titulo": "Treino aeróbico de 5 minutos",
+          "url": "https://www.youtube.com/watch?v=jePHHr42Q6Y"
+        },
+        {
+          "titulo": "Treino aeróbico de 5 minutos",
+          "url": "https://www.youtube.com/watch?v=jePHHr42Q6Y"
+        },
+        {
+          "titulo": "Ginástica aeróbica",
+          "url": "https://www.youtube.com/watch?v=o_L-oKLYYvg"
+        },
+        {
+          "titulo": "Aeróbico sem impacto",
+          "url": "https://www.youtube.com/watch?v=2z4BP1kssQs"
+        },
+        {
+          "titulo": "10 maneiras de fazer treino aeróbico em casa",
+          "url": "https://www.youtube.com/watch?v=AcVgQkaqtBM"
+        }
+      ]
+    },
+    {
+      "titulo": "Meditação",
+      "cor": "#7CFC00",
+      "videos": [
+        {
+          "titulo": "Aplicativos grátis de meditação",
+          "url": "https://www.youtube.com/watch?v=MvNu7iv0c0Q"
+        },
+        {
+          "titulo": "Aplicativos grátis de meditação",
+          "url": "https://www.youtube.com/watch?v=MvNu7iv0c0Q"
+        },
+        {
+          "titulo": "Meditação - Por que praticar?",
+          "url": "https://www.youtube.com/watch?v=WYY_VlvGsG8"
+        },
+        {
+          "titulo": "Meditação em casa de maneira simples",
+          "url": "https://www.youtube.com/watch?v=SnNggLkaOhA"
+        },
+        {
+          "titulo": "Meditação para relaxar",
+          "url": "https://www.youtube.com/watch?v=5qHXtfSDoJM"
+        }
+      ]
+    }
+  ]
+}
