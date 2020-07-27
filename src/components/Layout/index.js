@@ -18,7 +18,7 @@ const Layout = () => {
       <BannerMain
         videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
         url={dadosIniciais.categorias[0].videos[0].url}
-        videoDescription="Exercicios que você pode fazer em casa nesta pandemia "
+        videoDescription="Exercícios que você pode fazer em casa"
       />
 
       <Carousel ignoreFirstVideo category={dadosIniciais.categorias[0]} />
