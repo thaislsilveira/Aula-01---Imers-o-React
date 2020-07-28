@@ -28,6 +28,7 @@ const Container = styled.ul`
 `;
 
 const SliderComponent = styled(SlickSlider)`
+  margin-bottom: 40px;
   .slick-arrow {
     &:before {
       color: #7159c1;
