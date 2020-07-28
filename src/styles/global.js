@@ -68,5 +68,21 @@ const GlobalStyles = createGlobalStyle`
     --frontEnd: #6BD1FF;
     --backEnd: #00C86F;
   }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+
+  }
 `;
 export default GlobalStyles;

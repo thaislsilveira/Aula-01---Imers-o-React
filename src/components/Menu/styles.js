@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const DefaultSpace = styled.div`
+  height: 94px;
+  width: 100%;
+  display: block;
+`;
+
 export const NavAvatar = styled.nav`
   width: 100%;
   height: 94px;

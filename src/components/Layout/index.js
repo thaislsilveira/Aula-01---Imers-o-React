@@ -7,11 +7,10 @@ import Carousel from '../Carousel';
 import Footer from '../Footer';
 
 import GlobalStyles from '../../styles/global';
-import { LayoutWrapper } from './styles';
 
 const Layout = () => {
   return (
-    <LayoutWrapper>
+    <>
       <GlobalStyles />
       <Menu />
 
@@ -27,7 +26,7 @@ const Layout = () => {
       <Carousel ignoreFirstVideo category={dadosIniciais.categorias[3]} />
 
       <Footer />
-    </LayoutWrapper>
+    </>
   );
 };
 

@@ -1,19 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
 import ButtonLink from '../components/ButtonLink';
 
-import { NavAvatar } from './styles';
+import { NavAvatar, DefaultSpace } from './styles';
 
 function Menu() {
   return (
-    <NavAvatar>
-      <a href="/">
-        <img src={Logo} alt="logo" />
-      </a>
-      <ButtonLink className="ButtonLink" href="/">
-        Novo vídeo
-      </ButtonLink>
-    </NavAvatar>
+    <>
+      <DefaultSpace />
+      <NavAvatar>
+        <Link to="/">
+          <img src={Logo} alt="logo" />
+        </Link>
+        <ButtonLink className="ButtonLink" to="cadastro/video">
+          Novo vídeo
+        </ButtonLink>
+      </NavAvatar>
+    </>
   );
 }
 
