@@ -27,8 +27,17 @@ const Container = styled.ul`
   }
 `;
 
+const SliderComponent = styled(SlickSlider)`
+  .slick-arrow {
+    &:before {
+      color: #7159c1;
+    }
+  }
+`;
+
 export const SliderItem = styled.li`
   margin-right: 16px;
+
   img {
     margin: 16px;
     width: 298px;
@@ -39,7 +48,7 @@ export const SliderItem = styled.li`
 
 const Slider = ({ children }) => (
   <Container>
-    <SlickSlider
+    <SliderComponent
       {...{
         dots: true,
         infinite: true,
@@ -50,7 +59,7 @@ const Slider = ({ children }) => (
       }}
     >
       {children}
-    </SlickSlider>
+    </SliderComponent>
   </Container>
 );
 
