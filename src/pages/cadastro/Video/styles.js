@@ -38,39 +38,16 @@ export const Content = styled.div`
   }
 `;
 
-export const TableContainer = styled.div`
+export const ContentLink = styled.div`
   padding: 40px 10px;
-`;
 
-export const ContentTable = styled.table`
-  border: 4px solid #7159c1;
-  box-sizing: border-box;
-  border-spacing: 0 25px;
-  font-size: 16px;
-  width: 100%;
-  text-align: left;
-  white-space: nowrap;
+  a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.5s;
 
-  thead {
-    tr {
-      font-size: 18px;
+    &:hover {
+      color: #7159c1;
     }
-    th {
-      padding: 10px 0 20px 0;
-      border: 4px solid #7159c1;
-      padding-left: 10px;
-    }
-  }
-  tbody tr {
-    height: 57px;
-  }
-
-  tbody td {
-    padding: 10px 0 20px 0;
-    padding-left: 10px;
-    border: 4px solid #7159c1;
-    padding-right: 50px;
-    margin-bottom: 25px;
-    border-radius: 4px;
   }
 `;
