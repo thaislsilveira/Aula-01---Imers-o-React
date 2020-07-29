@@ -59,6 +59,7 @@ export const ContentTable = styled.table`
       padding: 10px 0 20px 0;
       border: 4px solid #7159c1;
       padding-left: 10px;
+      font-weight: bold;
     }
   }
   tbody tr {
