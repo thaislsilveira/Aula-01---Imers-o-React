@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 
-import { Content, ContentTable, TableContainer } from './styles';
+import { Content, ContentTable, TableContainer, ContentLink } from './styles';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -30,6 +31,15 @@ function CadastroCategoria() {
 
     setCategoria(valoresIniciais);
   }
+
+  useEffect(() => {
+    const URL = 'http://localhost:8080/categorias';
+
+    fetch(URL).then(async (responseServer) => {
+      const response = await responseServer.json();
+      setCategorias([...response]);
+    });
+  }, []);
 
   return (
     <PageDefault>
@@ -70,6 +80,7 @@ function CadastroCategoria() {
             <button className="clean">Limpar</button>
           </aside>
         </form>
+        {categorias.length === 0 && <div>Carregando...</div>}
         <TableContainer>
           <ContentTable>
             {categorias[0] === undefined ? (
@@ -85,8 +96,8 @@ function CadastroCategoria() {
                   </tr>
                 </thead>
                 <tbody>
-                  {categorias.map((categoria, indice) => (
-                    <tr key={`${categoria}${indice}`}>
+                  {categorias.map((categoria) => (
+                    <tr key={`${categoria.name}`}>
                       <td>{categoria.nome}</td>
                       <td>{categoria.descricao}</td>
                       <td>Editar</td>
@@ -98,6 +109,9 @@ function CadastroCategoria() {
             )}
           </ContentTable>
         </TableContainer>
+        <ContentLink>
+          <Link to="/">← Home</Link>
+        </ContentLink>
       </Content>
     </PageDefault>
   );

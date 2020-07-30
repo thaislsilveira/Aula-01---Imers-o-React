@@ -75,3 +75,17 @@ export const ContentTable = styled.table`
     border-radius: 4px;
   }
 `;
+
+export const ContentLink = styled.div`
+  padding: 10px 10px;
+
+  a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.5s;
+
+    &:hover {
+      color: #7159c1;
+    }
+  }
+`;
