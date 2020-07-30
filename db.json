@@ -1,16 +1,22 @@
 {
   "categorias": [
     {
-    "id": 1,
-    "nome": "Calistenia",
-    "descricao": "8 dicas para começar a calistenia",
-    "cor": "#f78072"
+      "id": 1,
+      "nome": "Calistenia",
+      "descricao": "8 dicas para começar a calistenia",
+      "cor": "#f78072"
     },
     {
       "id": 2,
       "nome": "Hiit",
       "descricao": "Treino hiit para pernas e glúteos",
       "cor": "#f78b03"
+    },
+    {
+      "nome": "Aeróbico",
+      "descricao": "Aeróbico sem impacto",
+      "cor": "#de1717",
+      "id": 4
     }
   ]
 }

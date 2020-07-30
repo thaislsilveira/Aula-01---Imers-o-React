@@ -1,18 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 
 import { Content, ContentTable, TableContainer, ContentLink } from './styles';
 
+const useStyles = makeStyles((theme) => ({
+  wrapper: {
+    display: 'inline-block',
+    margin: theme.spacing(1),
+    position: 'relative',
+  },
+  wrapperButton: {
+    display: 'inline-block',
+    margin: theme.spacing(1),
+    position: 'relative',
+    '& .MuiButton-contained': {
+      textTransform: 'initial',
+    },
+    '& .MuiButton-contained.Mui-disabled': {
+      color: 'rgba(117, 117, 117, 0.26)',
+      boxShadow: 'none',
+      backgroundColor: 'rgba(202, 202, 202, 0.12)',
+    },
+  },
+  buttonProgress: {
+    color: '#fff',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+  },
+}));
+
 function CadastroCategoria() {
+  const URL = window.location.hostname.includes('localhost')
+    ? 'http://localhost:8080/categorias'
+    : 'https://fitflix.herokuapp.com/categorias';
+
   const valoresIniciais = {
     nome: '',
     descricao: '',
-    cor: '',
+    cor: '#ffffff',
   };
+
   const [categorias, setCategorias] = useState([]);
   const [categoria, setCategoria] = useState(valoresIniciais);
+  const [loading, setLoading] = useState(false);
+  const classes = useStyles();
+  const timer = React.useRef();
 
   function setValue(chave, valor) {
     setCategoria({
@@ -25,18 +66,36 @@ function CadastroCategoria() {
     setValue(e.target.getAttribute('name'), e.target.value);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setCategorias([...categorias, categoria]);
+    setLoading(true);
+    timer.current = setTimeout(async () => {
+      try {
+        await fetch(URL, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(categoria),
+        });
 
-    setCategoria(valoresIniciais);
+        toast.success('Categoria cadastrada com sucesso!');
+      } catch (err) {
+        toast.error('Ocorreu um erro, verifique seu dados!');
+      } finally {
+        setLoading(false);
+      }
+
+      setCategorias([...categorias, categoria]);
+      setCategoria(valoresIniciais);
+    }, 2000);
   }
 
   useEffect(() => {
-    const URL = 'http://localhost:8080/categorias';
-
     fetch(URL).then(async (responseServer) => {
       const response = await responseServer.json();
+      clearTimeout(timer.current);
       setCategorias([...response]);
     });
   }, []);
@@ -76,15 +135,38 @@ function CadastroCategoria() {
             onChange={handleChange}
           />
           <aside>
-            <button type="submit">Salvar</button>
-            <button className="clean">Limpar</button>
+            <div className={classes.wrapper}>
+              <div className={classes.wrapperButton}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={loading}
+                >
+                  Salvar
+                </Button>
+                {loading && (
+                  <CircularProgress
+                    size={24}
+                    className={classes.buttonProgress}
+                  />
+                )}
+              </div>
+              <button className="clean">Limpar</button>
+            </div>
           </aside>
         </form>
-        {categorias.length === 0 && <div>Carregando...</div>}
+        <ContentLink>
+          {categorias.length === 0 && <div>Carregando...</div>}
+        </ContentLink>
         <TableContainer>
           <ContentTable>
             {categorias[0] === undefined ? (
-              <h1>Não existe categoria cadastrada!</h1>
+              <tbody>
+                <tr>
+                  <td>Não existe categoria cadastrada!</td>
+                </tr>
+              </tbody>
             ) : (
               <>
                 <thead>
@@ -96,10 +178,10 @@ function CadastroCategoria() {
                   </tr>
                 </thead>
                 <tbody>
-                  {categorias.map((categoria) => (
-                    <tr key={`${categoria.name}`}>
-                      <td>{categoria.nome}</td>
-                      <td>{categoria.descricao}</td>
+                  {categorias.map((categoriaItem, index) => (
+                    <tr key={`${categoriaItem.nome}${index}`}>
+                      <td>{categoriaItem.nome}</td>
+                      <td>{categoriaItem.descricao}</td>
                       <td>Editar</td>
                       <td>Remover</td>
                     </tr>
