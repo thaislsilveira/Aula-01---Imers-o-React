@@ -74,6 +74,21 @@ export const ContentTable = styled.table`
     margin-bottom: 25px;
     border-radius: 4px;
   }
+
+  button {
+    font-weight: bold;
+    margin-left: 10px;
+    border-radius: 2px;
+    padding: 0px 15px;
+    background: #dd1313;
+    color: #fff;
+    border: none;
+    height: 36px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 `;
 
 export const ContentLink = styled.div`

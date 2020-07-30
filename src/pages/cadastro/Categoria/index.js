@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { confirmAlert } from 'react-confirm-alert';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Button from '@material-ui/core/Button';
@@ -6,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { Content, ContentTable, TableContainer, ContentLink } from './styles';
 
@@ -90,6 +92,38 @@ function CadastroCategoria() {
       setCategorias([...categorias, categoria]);
       setCategoria(valoresIniciais);
     }, 2000);
+  }
+
+  async function handleDelete(id) {
+    try {
+      await fetch(`${URL}/${id}`, {
+        method: 'DELETE',
+      });
+
+      const updatedList = categorias.filter((item) => item.id !== id);
+      setCategorias(updatedList);
+
+      toast.success('A categoria foi excluída');
+    } catch (err) {
+      toast.error('Não foi possível deletar a categoria');
+    }
+  }
+
+  function confirmDelete(id) {
+    confirmAlert({
+      title: 'Confirmação de exclusão',
+      message: 'Você quer mesmo excluir essa categoria?',
+      buttons: [
+        {
+          label: 'Sim',
+          onClick: () => handleDelete(id),
+        },
+        {
+          label: 'Não',
+          onClick: () => {},
+        },
+      ],
+    });
   }
 
   useEffect(() => {
@@ -183,7 +217,11 @@ function CadastroCategoria() {
                       <td>{categoriaItem.nome}</td>
                       <td>{categoriaItem.descricao}</td>
                       <td>Editar</td>
-                      <td>Remover</td>
+                      <td>
+                        <button onClick={() => confirmDelete(categoriaItem.id)}>
+                          Remover
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
