@@ -40,6 +40,8 @@ export const Content = styled.div`
 
 export const TableContainer = styled.div`
   padding: 40px 10px;
+  overflow: auto;
+  max-width: 100%;
 `;
 
 export const ContentTable = styled.table`
@@ -51,6 +53,14 @@ export const ContentTable = styled.table`
   text-align: left;
   white-space: nowrap;
 
+  tr:nth-of-type(odd) {
+    background: #171325;
+  }
+
+  th {
+    background: black;
+  }
+
   thead {
     tr {
       font-size: 18px;
@@ -61,9 +71,6 @@ export const ContentTable = styled.table`
       padding-left: 10px;
       font-weight: bold;
     }
-  }
-  tbody tr {
-    height: 57px;
   }
 
   tbody td {
@@ -87,6 +94,67 @@ export const ContentTable = styled.table`
 
     &:hover {
       opacity: 0.8;
+    }
+  }
+
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block !important;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tbody td {
+      /* Behave  like a "row" */
+      border: none;
+      position: relative;
+      padding: 10px 0;
+      padding-left: 50%;
+      margin-bottom: 4px;
+      white-space: normal;
+    }
+
+    tbody tr {
+      border-bottom: 4px solid #7159c1;
+    }
+
+    tbody td:before {
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 10px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    /*
+	Label the data
+	*/
+    tbody td:nth-of-type(1):before {
+      content: 'Nome';
+    }
+    tbody td:nth-of-type(2):before {
+      content: 'Descrição';
+    }
+    tbody td:nth-of-type(3):before {
+      content: 'Editar';
+    }
+    tbody td:nth-of-type(4):before {
+      content: 'Remover';
     }
   }
 `;
