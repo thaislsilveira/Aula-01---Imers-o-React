@@ -1,32 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
-import Menu from '../Menu';
-import dadosIniciais from '../../data/dados_iniciais.json';
+// import dadosIniciais from '../../data/dados_iniciais.json';
 import BannerMain from '../BannerMain';
 import Carousel from '../Carousel';
-import Footer from '../Footer';
 
-import GlobalStyles from '../../styles/global';
+import categoriasRepository from '../../repositories/categorias';
+
+import PageDefault from '../PageDefault/index';
 
 const Layout = () => {
+  const [dadosIniciais, setDatosIniciais] = useState([]);
+
+  useEffect(() => {
+    categoriasRepository
+      .getAllWithVideos()
+      .then((categoryWithVideo) => {
+        setDatosIniciais(categoryWithVideo);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  }, []);
+
   return (
-    <>
-      <GlobalStyles />
-      <Menu />
+    <PageDefault paddingAll={0}>
+      {dadosIniciais.length === 0 && <div>Carregando...</div>}
 
-      <BannerMain
-        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-        url={dadosIniciais.categorias[0].videos[0].url}
-        videoDescription="Exercícios que você pode fazer em casa"
-      />
+      {dadosIniciais.map((categoria, indice) => {
+        if (indice === 0) {
+          return (
+            <div key={categoria.id}>
+              <BannerMain
+                videoTitle={dadosIniciais[0].videos[0].titulo}
+                url={dadosIniciais[0].videos[0].url}
+                videoDescription={dadosIniciais[0].videos[0].description}
+              />
+              <Carousel ignoreFirstVideo category={dadosIniciais[0]} />
+            </div>
+          );
+        }
 
-      <Carousel ignoreFirstVideo category={dadosIniciais.categorias[0]} />
-      <Carousel ignoreFirstVideo category={dadosIniciais.categorias[1]} />
-      <Carousel ignoreFirstVideo category={dadosIniciais.categorias[2]} />
-      <Carousel ignoreFirstVideo category={dadosIniciais.categorias[3]} />
-
-      <Footer />
-    </>
+        return <Carousel key={categoria.id} category={categoria} />;
+      })}
+    </PageDefault>
   );
 };
 

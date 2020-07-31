@@ -9,6 +9,8 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
+import useForm from '../../../hooks/useForm';
+
 import { Content, ContentTable, TableContainer, ContentLink } from './styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,27 +48,16 @@ function CadastroCategoria() {
     : 'https://fitflix.herokuapp.com/categorias';
 
   const valoresIniciais = {
-    nome: '',
+    titulo: '',
     descricao: '',
     cor: '#ffffff',
   };
 
+  const { handleChange, valores, clearForm } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState([]);
-  const [categoria, setCategoria] = useState(valoresIniciais);
   const [loading, setLoading] = useState(false);
   const classes = useStyles();
   const timer = React.useRef();
-
-  function setValue(chave, valor) {
-    setCategoria({
-      ...categoria,
-      [chave]: valor,
-    });
-  }
-
-  function handleChange(e) {
-    setValue(e.target.getAttribute('name'), e.target.value);
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -79,7 +70,7 @@ function CadastroCategoria() {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(categoria),
+          body: JSON.stringify(valores),
         });
 
         toast.success('Categoria cadastrada com sucesso!');
@@ -89,8 +80,8 @@ function CadastroCategoria() {
         setLoading(false);
       }
 
-      setCategorias([...categorias, categoria]);
-      setCategoria(valoresIniciais);
+      setCategorias([...categorias, valores]);
+      clearForm(valoresIniciais);
     }, 2000);
   }
 
@@ -137,15 +128,15 @@ function CadastroCategoria() {
   return (
     <PageDefault>
       <Content>
-        <h1>Nova Categoria: {categoria.nome}</h1>
+        <h1>Nova Categoria: {valores.titulo}</h1>
 
         <form onSubmit={handleSubmit}>
           <FormField
             label="Nome"
             type="text"
-            name="nome"
+            name="titulo"
             placeholder="Nome"
-            value={categoria.nome}
+            value={valores.titulo}
             onChange={handleChange}
           />
 
@@ -154,7 +145,7 @@ function CadastroCategoria() {
             type="text"
             name="descricao"
             placeholder="Descrição"
-            value={categoria.descricao}
+            value={valores.descricao}
             onChange={handleChange}
             multiline
             rows={4}
@@ -165,7 +156,7 @@ function CadastroCategoria() {
             type="color"
             name="cor"
             placeholder="Cor"
-            value={categoria.cor}
+            value={valores.cor}
             onChange={handleChange}
           />
           <aside>
@@ -186,7 +177,6 @@ function CadastroCategoria() {
                   />
                 )}
               </div>
-              <button className="clean">Limpar</button>
             </div>
           </aside>
         </form>
@@ -213,8 +203,8 @@ function CadastroCategoria() {
                 </thead>
                 <tbody>
                   {categorias.map((categoriaItem, index) => (
-                    <tr key={`${categoriaItem.nome}${index}`}>
-                      <td>{categoriaItem.nome}</td>
+                    <tr key={`${categoriaItem.titulo}${index}`}>
+                      <td>{categoriaItem.titulo}</td>
                       <td>{categoriaItem.descricao}</td>
                       <td>Editar</td>
                       <td>
@@ -230,7 +220,7 @@ function CadastroCategoria() {
           </ContentTable>
         </TableContainer>
         <ContentLink>
-          <Link to="/">← Home</Link>
+          <Link to="/cadastro/video">← Vídeo</Link>
         </ContentLink>
       </Content>
     </PageDefault>

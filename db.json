@@ -1,16 +1,207 @@
 {
   "categorias": [
     {
+      "titulo": "Calistenia",
+      "descricao": "Calistenia: o Básico",
+      "cor": "#f78072",
+      "id": 1
+    },
+    {
       "id": 2,
-      "nome": "Hiit",
+      "titulo": "Hiit",
       "descricao": "Treino hiit para pernas e glúteos",
       "cor": "#f78b03"
     },
     {
-      "nome": "Aeróbico",
+      "titulo": "Aeróbico",
       "descricao": "Aeróbico sem impacto",
       "cor": "#de1717",
+      "id": 3
+    },
+    {
+      "titulo": "Meditação",
+      "descricao": "Como Meditar",
+      "cor": "#7cfc03",
       "id": 4
+    }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "categoriaId": 1,
+      "titulo": "Treino em Casa para fazer com a família",
+      "url": "https://www.youtube.com/watch?v=_pqIAzxMe4s"
+    },
+    {
+      "id": 2,
+      "categoriaId": 1,
+      "titulo": "8 dicas para começar a calistenia",
+      "url": "https://www.youtube.com/watch?v=UrXWT6St12Y"
+    },
+    {
+      "id": 3,
+      "categoriaId": 1,
+      "titulo": "Calistenia para iniciantes",
+      "url": "https://www.youtube.com/watch?v=KQBwTl0mgk8"
+    },
+    {
+      "id": 4,
+      "categoriaId": 1,
+      "titulo": "Hipertrofia para o corpo inteiro",
+      "url": "https://www.youtube.com/watch?v=px-E6ZDsgCc"
+    },
+    {
+      "id": 5,
+      "categoriaId": 1,
+      "titulo": "Como fazer flexões",
+      "url": "https://www.youtube.com/watch?v=h4XbJ05wU14"
+    },
+    {
+      "id": 6,
+      "categoriaId": 1,
+      "titulo": "Os 4 EXERCÍCIOS de CALISTENIA do REI ARTHUR",
+      "url": "https://www.youtube.com/watch?v=GDqA7J998gg"
+    },
+    {
+      "id": 7,
+      "categoriaId": 2,
+      "titulo": "Desafio HIIT - treino cardio para perder gordura",
+      "url": "https://www.youtube.com/watch?v=VYMDwYrxyxw"
+    },
+    {
+      "id": 8,
+      "categoriaId": 2,
+      "titulo": "Aerohiit para iniciantes",
+      "url": "https://www.youtube.com/watch?v=KwxCuTuknMk"
+    },
+    {
+      "id": 9,
+      "categoriaId": 2,
+      "titulo": "Treino Hiit para pernas e glúteos",
+      "url": "https://www.youtube.com/watch?v=Ij-m240fQdw"
+    },
+    {
+      "id": 10,
+      "categoriaId": 2,
+      "titulo": "Desafio HIIT - treino cardio para perder gordura",
+      "url": "https://www.youtube.com/watch?v=VYMDwYrxyxw"
+    },
+    {
+      "id": 11,
+      "categoriaId": 2,
+      "titulo": "Hiit com polichinelos",
+      "url": "https://www.youtube.com/watch?v=Ya64pNiZy50"
+    },
+    {
+      "id": 12,
+      "categoriaId": 3,
+      "titulo": "Treino aeróbico de 5 minutos",
+      "url": "https://www.youtube.com/watch?v=jePHHr42Q6Y"
+    },
+    {
+      "id": 13,
+      "categoriaId": 3,
+      "titulo": "Treino aeróbico de 5 minutos",
+      "url": "https://www.youtube.com/watch?v=jePHHr42Q6Y"
+    },
+    {
+      "id": 14,
+      "categoriaId": 3,
+      "titulo": "Ginástica aeróbica",
+      "url": "https://www.youtube.com/watch?v=o_L-oKLYYvg"
+    },
+    {
+      "id": 15,
+      "categoriaId": 3,
+      "titulo": "Aeróbico sem impacto",
+      "url": "https://www.youtube.com/watch?v=2z4BP1kssQs"
+    },
+    {
+      "id": 16,
+      "categoriaId": 3,
+      "titulo": "10 maneiras de fazer treino aeróbico em casa",
+      "url": "https://www.youtube.com/watch?v=AcVgQkaqtBM"
+    },
+    {
+      "id": 17,
+      "categoriaId": 3,
+      "titulo": "Aeróbico mexendo os braços",
+      "url": "https://www.youtube.com/watch?v=1MjXwz5GLgw"
+    },
+    {
+      "id": 18,
+      "categoriaId": 4,
+      "titulo": "Aplicativos grátis de meditação",
+      "url": "https://www.youtube.com/watch?v=MvNu7iv0c0Q"
+    },
+    {
+      "id": 19,
+      "categoriaId": 4,
+      "titulo": "Aplicativos grátis de meditação",
+      "url": "https://www.youtube.com/watch?v=MvNu7iv0c0Q"
+    },
+    {
+      "id": 20,
+      "categoriaId": 4,
+      "titulo": "Meditação - Por que praticar?",
+      "url": "https://www.youtube.com/watch?v=WYY_VlvGsG8"
+    },
+    {
+      "id": 21,
+      "categoriaId": 4,
+      "titulo": "Meditação em casa de maneira simples",
+      "url": "https://www.youtube.com/watch?v=SnNggLkaOhA"
+    },
+    {
+      "id": 22,
+      "categoriaId": 4,
+      "titulo": "Meditação para relaxar",
+      "url": "https://www.youtube.com/watch?v=5qHXtfSDoJM"
+    },
+    {
+      "id": 23
+    },
+    {
+      "id": 24
+    },
+    {
+      "id": 25
+    },
+    {
+      "titulo": "Vídeo padrão",
+      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
+      "categoriaId": 2,
+      "id": 26
+    },
+    {
+      "titulo": "Vídeo padrão",
+      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
+      "categoriaId": 2,
+      "id": 27
+    },
+    {
+      "titulo": "Vídeo padrão",
+      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
+      "categoriaId": 2,
+      "id": 28
+    },
+    {
+      "titulo": "Vídeo padrão",
+      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
+      "categoriaId": 2,
+      "id": 29
+    },
+    {
+      "titulo": "Vídeo padrão",
+      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
+      "categoriaId": 2,
+      "id": 30
+    },
+    {
+      "titulo": "Vídeo padrão",
+      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
+      "categoriaId": 2,
+      "id": 31
     }
   ]
 }

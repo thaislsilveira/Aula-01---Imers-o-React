@@ -7,12 +7,12 @@ import GlobalStyles from '../../styles/global';
 
 import { Main } from './styles';
 
-function PageDefault({ children }) {
+function PageDefault({ children, paddingAll }) {
   return (
     <>
       <GlobalStyles />
       <Menu />
-      <Main>{children}</Main>
+      <Main paddingAll={paddingAll}>{children}</Main>
       <Footer />
     </>
   );
