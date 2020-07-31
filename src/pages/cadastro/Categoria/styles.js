@@ -20,10 +20,6 @@ export const Content = styled.div`
     }
 
     aside {
-      button.clean {
-        background: #9e9e9e;
-      }
-
       button {
         font-weight: bold;
         margin-left: 10px;
@@ -87,14 +83,9 @@ export const ContentTable = styled.table`
     margin-left: 10px;
     border-radius: 2px;
     padding: 0px 15px;
-    background: #dd1313;
     color: #fff;
     border: none;
     height: 36px;
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
 
   @media only screen and (max-width: 760px),

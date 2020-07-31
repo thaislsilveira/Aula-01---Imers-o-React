@@ -27,21 +27,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FormField({ label, type, name, value, onChange, multiline, rows }) {
+function FormField({
+  label,
+  type,
+  name,
+  value,
+  onChange,
+  multiline,
+  rows,
+  select,
+  children,
+}) {
   const classes = useStyles();
+  const fieldId = `id_${name}`;
 
   return (
-    <TextField
-      className={classes.root}
-      label={label}
-      multiline={multiline}
-      rows={rows}
-      type={type}
-      value={value}
-      name={name}
-      variant="filled"
-      onChange={onChange}
-    />
+    <>
+      <TextField
+        id={fieldId}
+        className={classes.root}
+        label={label}
+        multiline={multiline}
+        rows={rows}
+        type={type}
+        value={value}
+        name={name}
+        variant="filled"
+        onChange={onChange}
+        select={select}
+      >
+        {children}
+      </TextField>
+    </>
   );
 }
 

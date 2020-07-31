@@ -9,9 +9,15 @@ function useForm(valoresIniciais) {
       [chave]: valor,
     });
   }
+  function setValues(values) {
+    setValores({
+      ...valores,
+      ...values,
+    });
+  }
 
   function handleChange(e) {
-    setValue(e.target.getAttribute('name'), e.target.value);
+    setValue(e.target.name, e.target.value);
   }
 
   function clearForm() {
@@ -22,6 +28,7 @@ function useForm(valoresIniciais) {
     valores,
     clearForm,
     handleChange,
+    setValues,
   };
 }
 

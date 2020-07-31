@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import Menu from '../Menu';
 import Footer from '../Footer';
@@ -14,6 +15,7 @@ function PageDefault({ children, paddingAll }) {
       <Menu />
       <Main paddingAll={paddingAll}>{children}</Main>
       <Footer />
+      <ToastContainer />
     </>
   );
 }

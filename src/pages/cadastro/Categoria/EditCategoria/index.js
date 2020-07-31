@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import MenuItem from '@material-ui/core/MenuItem';
-import PageDefault from '../../../components/PageDefault';
-import FormField from '../../../components/FormField';
-import useForm from '../../../hooks/useForm';
-import videoRepository from '../../../repositories/videos';
-import categoriaRepository from '../../../repositories/categorias';
+import { toast } from 'react-toastify';
+import FormField from '../../../../components/FormField';
+import PageDefault from '../../../../components/PageDefault';
+import useForm from '../../../../hooks/useForm';
 
-import { Content, ContentLink } from './styles';
+import categoriaRepository from '../../../../repositories/categorias';
+
+import { Content, ContentLink } from '../styles';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -42,34 +41,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CadastroVideo() {
-  const valoresIniciais = {
-    titulo: 'Vídeo padrão',
-    url: 'https://www.youtube.com/watch?v=0R0kKLnv2uY',
-    categoria: '',
-  };
-
+function EditarCategoria() {
+  const { id } = useParams();
   const history = useHistory();
-  const [categorias, setCategorias] = useState([]);
-  const { handleChange, valores } = useForm(valoresIniciais);
-  const [loading, setLoading] = useState(false);
   const classes = useStyles();
+  const [loading, setLoading] = useState(false);
+  const valoresIniciais = [];
   const timer = React.useRef();
+
+  const { handleChange, valores, setValues } = useForm(valoresIniciais);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-
     timer.current = setTimeout(async () => {
       try {
-        await videoRepository.create({
+        await categoriaRepository.update({
           titulo: valores.titulo,
-          url: valores.url,
-          categoriaId: valores.categoria,
+          descricao: valores.descricao,
+          cor: valores.cor,
+          id: valores.id,
         });
 
-        history.push('/');
-        toast.success('Vídeo cadastrado com sucesso!');
+        history.push('/cadastro/categoria');
+        toast.success('Categoria alterada com sucesso!');
       } catch (err) {
         toast.error('Ocorreu um erro, verifique seu dados!');
       } finally {
@@ -79,45 +74,45 @@ function CadastroVideo() {
   }
 
   useEffect(() => {
-    categoriaRepository.getAll().then((categoriasFromSever) => {
-      setCategorias(categoriasFromSever);
+    categoriaRepository.getOne(id).then((response) => {
+      setValues(response);
     });
   }, []);
 
   return (
     <PageDefault>
       <Content>
-        <h1>Novo Vídeo</h1>
+        <h1>Nova Categoria: {valores.titulo}</h1>
 
         <form onSubmit={handleSubmit}>
           <FormField
-            label="Título"
+            label="Nome"
             type="text"
-            name="nome"
+            name="titulo"
+            placeholder="Nome"
             value={valores.titulo}
             onChange={handleChange}
           />
+
           <FormField
-            label="Link do vídeo"
+            label="Descrição"
             type="text"
-            name="url"
-            value={valores.url}
+            name="descricao"
+            placeholder="Descrição"
+            value={valores.descricao}
+            onChange={handleChange}
+            multiline
+            rows={4}
+          />
+
+          <FormField
+            label="Cor"
+            type="color"
+            name="cor"
+            placeholder="Cor"
+            value={valores.cor}
             onChange={handleChange}
           />
-          <FormField
-            label="Escolha uma categoria"
-            select
-            name="categoria"
-            value={valores.categoria}
-            onChange={handleChange}
-          >
-            {categorias.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.titulo}
-              </MenuItem>
-            ))}
-          </FormField>
-
           <aside>
             <div className={classes.wrapper}>
               <div className={classes.wrapperButton}>
@@ -139,13 +134,16 @@ function CadastroVideo() {
             </div>
           </aside>
         </form>
+        {/* <ContentLink>
+          {categorias.length === 0 && <div>Carregando...</div>}
+        </ContentLink> */}
 
         <ContentLink>
-          <Link to="/cadastro/categoria">Cadastro Categoria →</Link>
+          <Link to="/cadastro/categoria">← Voltar</Link>
         </ContentLink>
       </Content>
     </PageDefault>
   );
 }
 
-export default CadastroVideo;
+export default EditarCategoria;

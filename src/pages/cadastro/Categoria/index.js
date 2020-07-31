@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
+import categoriaRepository from '../../../repositories/categorias';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import useForm from '../../../hooks/useForm';
@@ -53,6 +54,7 @@ function CadastroCategoria() {
     cor: '#ffffff',
   };
 
+  const history = useHistory();
   const { handleChange, valores, clearForm } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -64,13 +66,10 @@ function CadastroCategoria() {
     setLoading(true);
     timer.current = setTimeout(async () => {
       try {
-        await fetch(URL, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(valores),
+        await categoriaRepository.create({
+          titulo: valores.titulo,
+          descricao: valores.descricao,
+          cor: valores.cor,
         });
 
         toast.success('Categoria cadastrada com sucesso!');
@@ -87,14 +86,13 @@ function CadastroCategoria() {
 
   async function handleDelete(id) {
     try {
-      await fetch(`${URL}/${id}`, {
-        method: 'DELETE',
+      await categoriaRepository.remove({
+        id,
       });
-
       const updatedList = categorias.filter((item) => item.id !== id);
       setCategorias(updatedList);
 
-      toast.success('A categoria foi excluída');
+      toast.success('A categoria foi excluída com sucesso!');
     } catch (err) {
       toast.error('Não foi possível deletar a categoria');
     }
@@ -206,11 +204,27 @@ function CadastroCategoria() {
                     <tr key={`${categoriaItem.titulo}${index}`}>
                       <td>{categoriaItem.titulo}</td>
                       <td>{categoriaItem.descricao}</td>
-                      <td>Editar</td>
                       <td>
-                        <button onClick={() => confirmDelete(categoriaItem.id)}>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          disabled={loading}
+                          onClick={() =>
+                            history.push(`categorias/${categoriaItem.id}`)
+                          }
+                        >
+                          Editar
+                        </Button>
+                      </td>
+                      <td>
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          disabled={loading}
+                          onClick={() => confirmDelete(categoriaItem.id)}
+                        >
                           Remover
-                        </button>
+                        </Button>
                       </td>
                     </tr>
                   ))}

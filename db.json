@@ -9,7 +9,7 @@
     {
       "id": 2,
       "titulo": "Hiit",
-      "descricao": "Treino hiit para pernas e glúteos",
+      "descricao": "Treino de hiit para pernas e glúteos",
       "cor": "#f78b03"
     },
     {
@@ -157,51 +157,6 @@
       "categoriaId": 4,
       "titulo": "Meditação para relaxar",
       "url": "https://www.youtube.com/watch?v=5qHXtfSDoJM"
-    },
-    {
-      "id": 23
-    },
-    {
-      "id": 24
-    },
-    {
-      "id": 25
-    },
-    {
-      "titulo": "Vídeo padrão",
-      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
-      "categoriaId": 2,
-      "id": 26
-    },
-    {
-      "titulo": "Vídeo padrão",
-      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
-      "categoriaId": 2,
-      "id": 27
-    },
-    {
-      "titulo": "Vídeo padrão",
-      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
-      "categoriaId": 2,
-      "id": 28
-    },
-    {
-      "titulo": "Vídeo padrão",
-      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
-      "categoriaId": 2,
-      "id": 29
-    },
-    {
-      "titulo": "Vídeo padrão",
-      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
-      "categoriaId": 2,
-      "id": 30
-    },
-    {
-      "titulo": "Vídeo padrão",
-      "url": "https://www.youtube.com/watch?v=0R0kKLnv2uY",
-      "categoriaId": 2,
-      "id": 31
     }
   ]
 }

@@ -13,7 +13,7 @@ function Menu() {
         <Link to="/">
           <img src={Logo} alt="logo" />
         </Link>
-        <ButtonLink className="ButtonLink" to="cadastro/video">
+        <ButtonLink className="ButtonLink" to="/cadastro/video">
           Novo vídeo
         </ButtonLink>
       </NavAvatar>
