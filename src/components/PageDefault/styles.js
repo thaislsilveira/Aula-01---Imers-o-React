@@ -10,4 +10,7 @@ export const Main = styled.main`
   ${({ paddingAll }) => css`
     padding: ${paddingAll};
   `}
+  ${({ background }) => css`
+    background: ${background};
+  `}
 `;

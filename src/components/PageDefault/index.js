@@ -8,12 +8,14 @@ import GlobalStyles from '../../styles/global';
 
 import { Main } from './styles';
 
-function PageDefault({ children, paddingAll }) {
+function PageDefault({ children, paddingAll, background }) {
   return (
     <>
       <GlobalStyles />
       <Menu />
-      <Main paddingAll={paddingAll}>{children}</Main>
+      <Main paddingAll={paddingAll} background={background}>
+        {children}
+      </Main>
       <Footer />
       <ToastContainer />
     </>

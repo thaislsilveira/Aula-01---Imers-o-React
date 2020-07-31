@@ -18,6 +18,7 @@ export const ContentAreaContainer = styled.section`
 ContentAreaContainer.Item = styled.div`
   width: 50%;
   display: inline-block;
+  text-align: center;
   @media (max-width: 800px) {
     width: 100%;
   }
@@ -100,7 +101,7 @@ export const BannerMainContainer = styled.section`
   }
 `;
 
-export const WatchButton = styled.button`
+export const WatchButton = styled.a`
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   cursor: pointer;
@@ -120,7 +121,8 @@ export const WatchButton = styled.button`
   display: none;
   margin: 0 auto;
   @media (max-width: 800px) {
-    display: block;
+    display: inline-block;
+    margin: auto;
     margin-bottom: 26px;
   }
 `;

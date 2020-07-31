@@ -151,7 +151,7 @@ export const ContentTable = styled.table`
 `;
 
 export const ContentLink = styled.div`
-  padding: 10px 10px;
+  padding: 40px 10px;
 
   a {
     color: var(--white);

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-// import dadosIniciais from '../../data/dados_iniciais.json';
 import BannerMain from '../BannerMain';
 import Carousel from '../Carousel';
 
@@ -24,7 +23,7 @@ const Layout = () => {
   }, []);
 
   return (
-    <PageDefault paddingAll={0}>
+    <PageDefault paddingAll={0} background="white">
       {dadosIniciais.length === 0 && <div>Carregando...</div>}
 
       {dadosIniciais.map((categoria, indice) => {

@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
 
 function CadastroVideo() {
   const valoresIniciais = {
-    titulo: 'Vídeo padrão',
-    url: 'https://www.youtube.com/watch?v=0R0kKLnv2uY',
+    titulo: '',
+    url: '',
     categoria: '',
   };
 

@@ -134,10 +134,6 @@ function EditarCategoria() {
             </div>
           </aside>
         </form>
-        {/* <ContentLink>
-          {categorias.length === 0 && <div>Carregando...</div>}
-        </ContentLink> */}
-
         <ContentLink>
           <Link to="/cadastro/categoria">← Voltar</Link>
         </ContentLink>
