@@ -18,7 +18,8 @@
     "react-toastify": "^5.5.0",
     "react-slick": "^0.27.1",
     "react-spinners": "^0.9.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "yup": "^0.28.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

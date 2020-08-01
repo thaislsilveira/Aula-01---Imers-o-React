@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 
 import Menu from '../Menu';
@@ -21,5 +22,17 @@ function PageDefault({ children, paddingAll, background }) {
     </>
   );
 }
+
+PageDefault.defaultProps = {
+  children: '',
+  background: '',
+  paddingAll: '',
+};
+
+PageDefault.propTypes = {
+  paddingAll: PropTypes.string,
+  children: PropTypes.string,
+  background: PropTypes.string,
+};
 
 export default PageDefault;

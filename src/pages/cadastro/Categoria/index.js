@@ -50,10 +50,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CadastroCategoria() {
-  const URL = window.location.hostname.includes('localhost')
-    ? 'http://localhost:8080/categorias'
-    : 'https://fitflix.herokuapp.com/categorias';
-
   const valoresIniciais = {
     titulo: '',
     descricao: '',
@@ -123,9 +119,9 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    fetch(URL)
-      .then(async (responseServer) => {
-        const response = await responseServer.json();
+    categoriaRepository
+      .getAll()
+      .then((response) => {
         clearTimeout(timer.current);
         setCategorias([...response]);
       })
@@ -156,6 +152,7 @@ function CadastroCategoria() {
               placeholder="Nome"
               value={valores.titulo}
               onChange={handleChange}
+              required
             />
 
             <FormField

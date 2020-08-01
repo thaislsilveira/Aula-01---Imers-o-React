@@ -37,6 +37,7 @@ function FormField({
   rows,
   select,
   children,
+  required,
 }) {
   const classes = useStyles();
   const fieldId = `id_${name}`;
@@ -55,6 +56,7 @@ function FormField({
         variant="filled"
         onChange={onChange}
         select={select}
+        required={required}
       >
         {children}
       </TextField>
@@ -68,6 +70,9 @@ FormField.defaultProps = {
   multiline: '',
   onChange: () => {},
   rows: {},
+  select: '',
+  children: '',
+  required: '',
 };
 
 FormField.propTypes = {
@@ -78,6 +83,9 @@ FormField.propTypes = {
   onChange: PropTypes.func,
   multiline: PropTypes.string,
   rows: PropTypes.number,
+  select: PropTypes.string,
+  children: PropTypes.string,
+  required: PropTypes.string,
 };
 
 export default FormField;

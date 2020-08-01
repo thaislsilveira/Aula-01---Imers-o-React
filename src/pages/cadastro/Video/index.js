@@ -96,6 +96,7 @@ function CadastroVideo() {
             name="titulo"
             value={valores.titulo}
             onChange={handleChange}
+            required
           />
           <FormField
             label="Link do vídeo"
@@ -103,6 +104,7 @@ function CadastroVideo() {
             name="url"
             value={valores.url}
             onChange={handleChange}
+            required
           />
           <FormField
             label="Escolha uma categoria"

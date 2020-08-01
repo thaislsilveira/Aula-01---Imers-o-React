@@ -11,7 +11,6 @@ function useForm(valoresIniciais) {
   }
   function setValues(values) {
     setValores({
-      ...valores,
       ...values,
     });
   }

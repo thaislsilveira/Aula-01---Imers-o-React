@@ -23,6 +23,12 @@
       "descricao": "Como Meditar",
       "cor": "#7cfc03",
       "id": 4
+    },
+    {
+      "titulo": "teste",
+      "descricao": "teste",
+      "cor": "#5f0c0c",
+      "id": 5
     }
   ],
   "videos": [
@@ -157,6 +163,18 @@
       "categoriaId": 4,
       "titulo": "Meditação para relaxar",
       "url": "https://www.youtube.com/watch?v=5qHXtfSDoJM"
+    },
+    {
+      "titulo": "3 Exercícios para chapar a barriga",
+      "url": "https://www.youtube.com/watch?v=T8XmMZtqRh4",
+      "categoriaId": 5,
+      "id": 23
+    },
+    {
+      "titulo": "https://www.youtube.com/watch?v=sWWMZH35Tdo",
+      "url": "https://www.youtube.com/watch?v=sWWMZH35Tdo",
+      "categoriaId": 5,
+      "id": 24
     }
   ]
 }
