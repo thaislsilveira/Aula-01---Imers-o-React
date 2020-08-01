@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -41,6 +42,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: -12,
     marginLeft: -12,
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#7159c1',
+    backgroundColor: 'rgba(0, 0, 0, 0.83)',
+  },
 }));
 
 function CadastroCategoria() {
@@ -58,6 +64,7 @@ function CadastroCategoria() {
   const { handleChange, valores, clearForm } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(true);
   const classes = useStyles();
   const timer = React.useRef();
 
@@ -116,128 +123,139 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    fetch(URL).then(async (responseServer) => {
-      const response = await responseServer.json();
-      clearTimeout(timer.current);
-      setCategorias([...response]);
-    });
+    fetch(URL)
+      .then(async (responseServer) => {
+        const response = await responseServer.json();
+        clearTimeout(timer.current);
+        setCategorias([...response]);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      })
+      .finally(() => {
+        timer.current = setTimeout(async () => {
+          setOpen(false);
+        }, 600);
+      });
   }, []);
 
   return (
-    <PageDefault>
-      <Content>
-        <h1>Nova Categoria: {valores.titulo}</h1>
+    <>
+      <Backdrop className={classes.backdrop} open={open}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <PageDefault>
+        <Content>
+          <h1>Nova Categoria: {valores.titulo}</h1>
 
-        <form onSubmit={handleSubmit}>
-          <FormField
-            label="Nome"
-            type="text"
-            name="titulo"
-            placeholder="Nome"
-            value={valores.titulo}
-            onChange={handleChange}
-          />
+          <form onSubmit={handleSubmit}>
+            <FormField
+              label="Nome"
+              type="text"
+              name="titulo"
+              placeholder="Nome"
+              value={valores.titulo}
+              onChange={handleChange}
+            />
 
-          <FormField
-            label="Descrição"
-            type="text"
-            name="descricao"
-            placeholder="Descrição"
-            value={valores.descricao}
-            onChange={handleChange}
-            multiline
-            rows={4}
-          />
+            <FormField
+              label="Descrição"
+              type="text"
+              name="descricao"
+              placeholder="Descrição"
+              value={valores.descricao}
+              onChange={handleChange}
+              multiline
+              rows={4}
+            />
 
-          <FormField
-            label="Cor"
-            type="color"
-            name="cor"
-            placeholder="Cor"
-            value={valores.cor}
-            onChange={handleChange}
-          />
-          <aside>
-            <div className={classes.wrapper}>
-              <div className={classes.wrapperButton}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  disabled={loading}
-                >
-                  Salvar
-                </Button>
-                {loading && (
-                  <CircularProgress
-                    size={24}
-                    className={classes.buttonProgress}
-                  />
-                )}
+            <FormField
+              label="Cor"
+              type="color"
+              name="cor"
+              placeholder="Cor"
+              value={valores.cor}
+              onChange={handleChange}
+            />
+            <aside>
+              <div className={classes.wrapper}>
+                <div className={classes.wrapperButton}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    disabled={loading}
+                  >
+                    Salvar
+                  </Button>
+                  {loading && (
+                    <CircularProgress
+                      size={24}
+                      className={classes.buttonProgress}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
-          </aside>
-        </form>
-        <ContentLink>
-          {categorias.length === 0 && <div>Carregando...</div>}
-        </ContentLink>
-        <TableContainer>
-          <ContentTable>
-            {categorias[0] === undefined ? (
-              <tbody>
-                <tr>
-                  <td>Não existe categoria cadastrada!</td>
-                </tr>
-              </tbody>
-            ) : (
-              <>
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Editar</th>
-                    <th>Remover</th>
-                  </tr>
-                </thead>
+            </aside>
+          </form>
+          <TableContainer>
+            <ContentTable>
+              {categorias[0] === undefined ? (
                 <tbody>
-                  {categorias.map((categoriaItem, index) => (
-                    <tr key={`${categoriaItem.titulo}${index}`}>
-                      <td>{categoriaItem.titulo}</td>
-                      <td>{categoriaItem.descricao}</td>
-                      <td>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          disabled={loading}
-                          onClick={() =>
-                            history.push(`categorias/${categoriaItem.id}`)
-                          }
-                        >
-                          Editar
-                        </Button>
-                      </td>
-                      <td>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          disabled={loading}
-                          onClick={() => confirmDelete(categoriaItem.id)}
-                        >
-                          Remover
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
+                  <tr>
+                    <td>Não existe categoria cadastrada!</td>
+                  </tr>
                 </tbody>
-              </>
-            )}
-          </ContentTable>
-        </TableContainer>
-        <ContentLink>
-          <Link to="/cadastro/video">← Vídeo</Link>
-        </ContentLink>
-      </Content>
-    </PageDefault>
+              ) : (
+                <>
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Descrição</th>
+                      <th>Editar</th>
+                      <th>Remover</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {categorias.map((categoriaItem, index) => (
+                      <tr key={`${categoriaItem.titulo}${index}`}>
+                        <td>{categoriaItem.titulo}</td>
+                        <td>{categoriaItem.descricao}</td>
+                        <td>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            disabled={loading}
+                            onClick={() =>
+                              history.push(`categorias/${categoriaItem.id}`)
+                            }
+                          >
+                            Editar
+                          </Button>
+                        </td>
+                        <td>
+                          <Button
+                            variant="contained"
+                            color="secondary"
+                            disabled={loading}
+                            onClick={() => confirmDelete(categoriaItem.id)}
+                          >
+                            Remover
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </>
+              )}
+            </ContentTable>
+          </TableContainer>
+          <ContentLink>
+            <Link to="/cadastro/video">← Vídeo</Link>
+          </ContentLink>
+        </Content>
+      </PageDefault>
+    </>
   );
 }
 
