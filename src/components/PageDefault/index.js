@@ -26,7 +26,7 @@ function PageDefault({ children, paddingAll, background }) {
 PageDefault.defaultProps = {
   children: React.ReactNode,
   background: '',
-  paddingAll: 0,
+  paddingAll: 4,
 };
 
 PageDefault.propTypes = {

@@ -79,8 +79,6 @@ async function update(categoriaObject) {
 }
 
 async function remove(categoriaObject) {
-  console.log(categoriaObject);
-
   return fetch(`${URL_CATEGORIES}/${categoriaObject.id}`, {
     method: 'DELETE',
   }).then(async (responseServer) => {
