@@ -83,9 +83,13 @@ export const ContentTable = styled.table`
     margin-left: 10px;
     border-radius: 2px;
     padding: 0px 15px;
-    color: #fff;
-    border: none;
+
+    color: #7159c1;
     height: 36px;
+    text-transform: initial;
+    svg {
+      margin-right: 6px;
+    }
   }
 
   @media only screen and (max-width: 760px),

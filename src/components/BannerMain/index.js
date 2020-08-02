@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import VideoIframeResponsive from './components/VideoIframeResponsive';
 import {
   BannerMainContainer,
@@ -39,3 +39,15 @@ export default function BannerMain({ videoTitle, videoDescription, url }) {
     </BannerMainContainer>
   );
 }
+
+BannerMain.defaultProps = {
+  videoTitle: '',
+  videoDescription: '',
+  url: '',
+};
+
+BannerMain.propTypes = {
+  videoTitle: PropTypes.string,
+  videoDescription: PropTypes.string,
+  url: PropTypes.string,
+};

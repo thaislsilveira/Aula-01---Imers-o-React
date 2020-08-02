@@ -67,12 +67,12 @@ function FormField({
 FormField.defaultProps = {
   type: 'text',
   value: '',
-  multiline: '',
+  multiline: false,
   onChange: () => {},
-  rows: {},
-  select: '',
-  children: '',
-  required: '',
+  rows: 4,
+  select: false,
+  children: React.ReactNode,
+  required: false,
 };
 
 FormField.propTypes = {
@@ -81,11 +81,11 @@ FormField.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func,
-  multiline: PropTypes.string,
+  multiline: PropTypes.bool,
   rows: PropTypes.number,
-  select: PropTypes.string,
-  children: PropTypes.string,
-  required: PropTypes.string,
+  select: PropTypes.bool,
+  children: PropTypes.node,
+  required: PropTypes.bool,
 };
 
 export default FormField;

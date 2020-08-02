@@ -24,14 +24,14 @@ function PageDefault({ children, paddingAll, background }) {
 }
 
 PageDefault.defaultProps = {
-  children: '',
+  children: React.ReactNode,
   background: '',
-  paddingAll: '',
+  paddingAll: 0,
 };
 
 PageDefault.propTypes = {
-  paddingAll: PropTypes.string,
-  children: PropTypes.string,
+  paddingAll: PropTypes.number,
+  children: PropTypes.node,
   background: PropTypes.string,
 };
 

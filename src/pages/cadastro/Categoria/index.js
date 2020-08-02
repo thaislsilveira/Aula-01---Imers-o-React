@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import { Link, useHistory } from 'react-router-dom';
+import { FaTrash, FaEdit } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -214,29 +215,29 @@ function CadastroCategoria() {
                     </tr>
                   </thead>
                   <tbody>
-                    {categorias.map((categoriaItem, index) => (
-                      <tr key={`${categoriaItem.titulo}${index}`}>
+                    {categorias.map((categoriaItem) => (
+                      <tr key={`${categoriaItem.titulo}${categoriaItem.id}`}>
                         <td>{categoriaItem.titulo}</td>
                         <td>{categoriaItem.descricao}</td>
                         <td>
                           <Button
                             variant="contained"
-                            color="primary"
                             disabled={loading}
                             onClick={() =>
                               history.push(`categorias/${categoriaItem.id}`)
                             }
                           >
+                            <FaEdit size={13} color="#4D85EE" />
                             Editar
                           </Button>
                         </td>
                         <td>
                           <Button
                             variant="contained"
-                            color="secondary"
                             disabled={loading}
                             onClick={() => confirmDelete(categoriaItem.id)}
                           >
+                            <FaTrash size={13} color="#DE3B3B" />
                             Remover
                           </Button>
                         </td>

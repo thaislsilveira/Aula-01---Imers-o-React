@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SlickSlider from 'react-slick';
 import styled from 'styled-components';
 
@@ -63,5 +64,13 @@ const Slider = ({ children }) => (
     </SliderComponent>
   </Container>
 );
+
+Slider.defaultProps = {
+  children: React.ReactNode,
+};
+
+Slider.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Slider;

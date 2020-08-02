@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { VideoCardGroupContainer, Title, ExtraLink } from './styles';
 import VideoCard from './components/VideoCard';
 
@@ -43,5 +44,33 @@ function Carousel({ ignoreFirstVideo, category }) {
     </VideoCardGroupContainer>
   );
 }
+
+Carousel.defaultProps = {
+  ignoreFirstVideo: false,
+  category: {
+    id: 0,
+    titulo: '',
+    cor: '',
+    link_extra: '',
+    videos: {},
+  },
+};
+
+Carousel.propTypes = {
+  ignoreFirstVideo: PropTypes.bool,
+  category: PropTypes.shape({
+    id: PropTypes.number,
+    titulo: PropTypes.string,
+    cor: PropTypes.string,
+    link_extra: PropTypes.string,
+    videos: PropTypes.arrayOf(
+      PropTypes.shape({
+        titulo: PropTypes.string,
+        url: PropTypes.string,
+        description: PropTypes.string,
+      })
+    ),
+  }),
+};
 
 export default Carousel;
