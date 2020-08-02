@@ -7446,6 +7446,18 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lottie-react@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/lottie-react/-/lottie-react-2.0.0.tgz#ba1efd0af0dae5ccec53b56911cd3fa939634f6a"
+  integrity sha512-Mrm1AcdoqZya59E3Jtyl9fBRNIDFvMlGrH4ah2pwHYtPWt+RlPEa3zkR87nVLmQQG98yn+GJIEpIDuaYbPKZKA==
+  dependencies:
+    lottie-web "^5.6.10"
+
+lottie-web@^5.6.10:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.7.1.tgz#505f748a2dda836f7b582f811004c5ab8791c90c"
+  integrity sha512-f7kO4Qcurldc9SWfGUuwgs96/SCT+hwATMCdMK6I/sd6EYK3Y0Ciz40yAvq0x9uXzrk6KKcnQrqijZM8Ir4Drg==
+
 lowdb@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lowdb/-/lowdb-1.0.0.tgz#5243be6b22786ccce30e50c9a33eac36b20c8064"
