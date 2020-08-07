@@ -21,8 +21,8 @@ yarn start
 ```
 ## Resultado :computer:
 
-![Flitflix](https://github.com/thaislsilveira/proffy-next-level-week/blob/master/web/src/assets/images/Peek%2007-08-2020%2017-17.gif)
+![Flitflix](https://github.com/thaislsilveira/Aula-01---Imers-o-React/blob/master/src/assets/fitflix01.gif)
 
 -Implementação do alterar e do excluir:
 
-![FlitflixCategoria](https://github.com/thaislsilveira/proffy-next-level-week/blob/master/web/src/assets/images/Peek%2007-08-2020%2017-17.gif)
+![FlitflixCategoria](https://github.com/thaislsilveira/Aula-01---Imers-o-React/blob/master/src/assets/fitflix02.gif)
