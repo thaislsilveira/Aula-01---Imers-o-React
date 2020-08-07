@@ -19,3 +19,10 @@ yarn
 ```
 yarn start
 ```
+## Resultado :computer:
+
+![Flitflix](https://github.com/thaislsilveira/proffy-next-level-week/blob/master/web/src/assets/images/Peek%2007-08-2020%2017-17.gif)
+
+-Implementação do alterar e do excluir:
+
+![FlitflixCategoria](https://github.com/thaislsilveira/proffy-next-level-week/blob/master/web/src/assets/images/Peek%2007-08-2020%2017-17.gif)
